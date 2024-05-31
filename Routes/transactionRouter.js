@@ -116,7 +116,7 @@ router.post("/transaction/auto", async (req, res) => {
 });
 
 // create two session and try to update data in collection
-router.post("/transaction3", async (req, res) => {
+router.post("/transaction/twoSession", async (req, res) => {
   const session1 = await mongoose.startSession();
   const session2 = await mongoose.startSession();
   const transactionoption = {
@@ -151,6 +151,8 @@ router.post("/transaction3", async (req, res) => {
     session2.endSession();
     return res.status(500).send({ error: error.message });
   }
+
+  // write concern error
 });
 
 module.exports = router;
